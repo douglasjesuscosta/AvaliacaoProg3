@@ -1,0 +1,142 @@
+
+<?init class="org.zkoss.zk.ui.util.Composition"
+        arg0="/pagebased/layout/template.zul"?>
+<zk>
+	<borderlayout apply="org.zkoss.bind.BindComposer"
+    	viewModel="@id('vm') @init('composer.ListViewModel')"
+    	self="@define(conteudo)">
+  		<north visible="true">
+			<hlayout style="color:blue;">
+			    <button sclass="btn-primary" label="Pesquisar" image="/imagens/search.png" onClick="@command('search')"/>
+			    <textbox id="parameterBox" value="@bind(vm.searchParamether1)"/>
+			</hlayout>
+		</north>
+		<center flex="true" >
+			<listbox model="@bind(vm.listModel)" selectedItem="@bind(vm.model)"  mold="paging" pageSize='10' hflex="max"  >
+				<listhead>
+					<listheader label="Titulo" />
+					<listheader label="Autor" />
+					<listheader label="Tipo" />
+				</listhead>
+				
+				<template name="model">
+					<listitem >
+						<listcell label="@load(each.title)" />
+						<listcell label="@load(each.author)" />
+						<listcell label="@load(each.kind)" />
+					</listitem>
+				</template>
+				
+			</listbox>
+		</center>
+		<east visible="@bind(not empty vm.model.pk)" width="500px"
+        border="none" collapsible="true" splittable="true"
+        minsize="500" autoscroll="true">
+        
+			<vlayout form="@id('fx') @load(vm.model) @save(vm.model, before='updateTodo') ">
+				<grid hflex="max">
+					<rows>
+						<row>
+							<cell sclass="row-title" align="left">
+								Titulo :
+							</cell>
+							<cell>
+								<textbox value="@bind(vm.model.title)" width="200px" />
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title" align="left">
+								Autor :
+							</cell>
+							<cell>
+								<textbox value="@bind(vm.model.author)" width="200px"></textbox>
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title" align="left">
+								Data :
+							</cell>
+							<cell>
+								<datebox value="@bind(vm.model.date)" format="dd-MM-yyyy"
+									width="200px">
+								</datebox>
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title" align="left">
+								Meio Fisico :
+							</cell>
+							<cell>
+								<checkbox value="@bind(vm.model.physical)"  checked="@bind(vm.model.physical)" />
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title" align="left">
+								Meio Digital :
+							</cell>
+							<cell>
+								<checkbox value="@bind(vm.model.digital)" checked="@bind(vm.model.digital)"/>
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title" align="left">
+								Classificação :
+							</cell>
+							<cell>
+								<combobox model="@bind(vm.listClassifications)" selectedItem="@bind(vm.model.classification)" value="@load(vm.model.classification.name)" >
+									<template name="model">
+										<comboitem label="@bind(each.name)" value="@load(each)" />
+									</template>
+								</combobox>
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title" align="left">
+								Tipo :
+							</cell>
+							<cell>
+								<radiogroup selectedItem="@bind(vm.model.kind)">
+									<hlayout>
+										<radio id="descritivo"
+											label="Descritivo"
+											value="descritivo"
+											 />
+										<radio id="argumentativo"
+											label="Argumentativo"
+											value="argumentativo"
+											 />
+									</hlayout>
+								</radiogroup>
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title" align="left">
+								Conteudo Privado :
+							</cell>
+							<cell>
+								<textbox value="@bind(vm.model.privateContent)"
+									width="200px">
+								</textbox>
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title" align="left">
+								Conteudo :
+							</cell>
+							<cell>
+								<textbox value="@bind(vm.model.content)" width="370px;"
+									tabindex="11" height="200px;" rows="10000000">
+								</textbox>
+							</cell>
+						</row>
+					</rows>
+				</grid>
+				<hlayout>
+					<button onClick="@command('save')" label="Atualizar" />
+					<button onClick="@command('delete')" label="Excluir" />
+	
+				</hlayout>
+			</vlayout>
+		</east>	
+	</borderlayout>	
+</zk>

@@ -1,0 +1,95 @@
+<?init class="security.AuthenticationInit"?>
+<window apply="${arg.composer2}">
+	<hbox width="100%" height="100%" hflex="1" vflex="1">
+		<vlayout>
+			<grid width="500px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">Titulo :</cell>
+						<cell>
+							<textbox id="titulo" width="200px" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Autor :</cell>
+						<cell>
+							<textbox id="autor"></textbox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Data :</cell>
+						<cell>
+							<datebox id="data" format="dd-MM-yyyy"></datebox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Meio Fisico :</cell>
+						<cell>
+							<checkbox id="meioFisico"></checkbox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Meio Digital :</cell>
+						<cell>
+							<checkbox id="meioDigital"></checkbox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Classificação :
+						</cell>
+						<cell>
+							<combobox id="classificacao"
+								selectedItem="@{controller.selectedClassificacao}"
+								model="@{controller.classificacaoModel}">
+								<template name="model">
+									<comboitem id="${each.id}"
+										label="${each.name}" />
+								</template>
+							</combobox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Tipo :</cell>
+
+						<cell>
+							<radiogroup id="tipoRadiogroup">
+								<hlayout>
+									<radio id="descritivo"
+										label="Descritivo" value="descritivo" />
+									<radio id="argumentativo"
+										label="Argumentativo" value="argumentativo" />
+								</hlayout>
+							</radiogroup>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">
+							Conteudo Privado :
+						</cell>
+						<cell>
+							<textbox id="conteudoPrivado"></textbox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Conteudo :</cell>
+						<cell>
+							<textbox id="conteudo" width="370px;"
+								tabindex="11" height="100px;">
+							</textbox>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+			<hlayout>
+				<button id="saveText" label="Save" />
+				<button id="deleteText" label="Excluir" />
+			</hlayout>
+		</vlayout>
+
+	</hbox>
+</window>

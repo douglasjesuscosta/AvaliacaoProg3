@@ -1,0 +1,15 @@
+<zk>
+	<style>
+		.footer { background-color:#4682B4; color: white; padding: 5px
+		10px; }
+	</style>
+
+	<div hflex="1" vflex="1" sclass="footer">
+			<div align="center">
+				Trabalho de Programação III VA
+			</div>
+			<div align="center">
+				Douglas de Jesus Costa
+			</div>
+	</div>
+</zk>

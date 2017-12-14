@@ -1,0 +1,36 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<?init class="org.zkoss.zk.ui.util.Composition"
+        arg0="/pagebased/layout/template.zul"?>
+<?init class="security.AuthenticationInit"?>
+
+<window  self="@define(conteudo)"  apply="composer.TextComposer">
+	<hlayout>
+		<button id="listAll" label="Listar Todos" />
+		<button id="reloadText" label="Recarregar" />
+		<textbox id="parameterBox" />
+        <button id="searchText" label="Pesquisar" image="/imagens/search.png" />
+	</hlayout>
+	<listbox id="textListBox"
+		selectedItem="@{textComposer.selectedText}" mold="paging" pageSize='10' hflex="max"  >
+		
+		<listhead>
+			<listheader label="Titulo" />
+			<listheader label="Autor" />
+			<listheader label="Tipo" />
+			<listheader label="Visualizar" />
+		</listhead>
+		
+		<template name="model">
+			<listitem>
+				<listcell label="${each.title}" />
+				<listcell label="${each.author}" />
+				<listcell label="${each.kind}" />
+				<listcell>
+					<button label="Visualizar"
+						forward="onClick=textListBox.onTextView" />
+				</listcell>
+			</listitem>
+		</template>
+		
+	</listbox>
+</window>

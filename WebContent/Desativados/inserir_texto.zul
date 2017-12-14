@@ -1,0 +1,8 @@
+
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<?init class="org.zkoss.zk.ui.util.Composition"
+        arg0="/layout.zul"?>
+<zk>
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+    <include self="@define(conteudo)" src="inserir_texto.zul"/>
+</zk>

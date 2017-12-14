@@ -1,0 +1,48 @@
+<?script content="
+    zk.afterLoad('zul.inp', function () {
+        var _xtextbox = {};
+        zk.override(zul.inp.Textbox.prototype, _xtextbox, {
+        textAttrs_: function () {
+            return _xtextbox.textAttrs_.apply(this, arguments)+' autocomplete=\"off\"';
+        }
+        });
+    });"?>
+
+
+
+<hbox vflex="1" hflex="1" align="center" pack="center" spacing="20px" >
+	<vlayout>
+
+		<window id="loginWin" apply="composer.LoginController"
+			title="Logue com seu usuário e senha" border="normal" hflex="min"
+			>
+
+			<vbox hflex="min" align="center">
+				<grid hflex="min">
+					<columns>
+						<column hflex="min" align="right" />
+						<column />
+					</columns>
+					<rows>
+						<row>
+							Account :
+							<textbox id="account" width="200px" />
+						</row>
+						<row>
+							Password :
+							<textbox id="password" type="password"
+								width="200px" />
+						</row>
+					</rows>
+				</grid>
+				<label id="message" sclass="warn" value="&#160;" />
+				<hbox>
+					<button id="login" label="Login" />
+					<button id="cadastrar" label="Cadastrar" />
+				</hbox>
+				
+
+			</vbox>
+		</window>
+	</vlayout>
+</hbox>

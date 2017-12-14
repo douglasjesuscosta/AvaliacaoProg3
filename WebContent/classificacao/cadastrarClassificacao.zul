@@ -1,0 +1,53 @@
+<?init class="org.zkoss.zk.ui.util.Composition"
+        arg0="/pagebased/layout/template.zul"?>
+        
+<window	apply="org.zkoss.bind.BindComposer" 
+	viewModel="@id('vm') @init('composer.ViewModelClassification')" 
+	id="Text"
+	border="normal" hflex="1" vflex="1" 
+	contentStyle="overflow:auto"
+	self="@define(conteudo)"
+	xmlns:h="http://www.w3.org/1999/xhtml">
+ 	<h:input type="hidden" id="useCase" value="Texts"/>
+	<vlayout>
+			<grid hflex="max">
+				<columns>
+					<column align="left" hflex="min" />
+					<column align="left" hflex="min"/>
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title" align="left">
+							Nome :
+						</cell>
+						<cell>
+							<textbox value="@bind(vm.model.name)" width="200px" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Descrição :
+						</cell>
+						<cell>
+							<textbox value="@bind(vm.model.description)" width="200px"/>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Referenciação :
+						</cell>
+						<cell>
+							<textbox value="@bind(vm.model.reference)" width="200px"/>
+						</cell>
+					</row>
+			
+					
+				</rows>
+			</grid>
+			<hlayout>
+				<button onClick="@command('save')" label="Salvar"></button>
+				<button onClick="@command('cancel')" label="Cancelar" />
+			</hlayout>
+		</vlayout>
+	
+</window>

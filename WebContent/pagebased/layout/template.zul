@@ -1,0 +1,18 @@
+
+
+<zk >
+	
+	<borderlayout hflex="1" vflex="1">
+		<north height="100px" border="none" >
+			<include src="/banner.zul"/>
+		</north>
+		<west width="260px" border="none"  minsize="300">
+			<include src="/pagebased/layout/sidebar.zul"/>
+		</west>
+		<center id="mainContent" autoscroll="true" border="none" self="@insert(conteudo)">
+		</center>
+		<south height="50px" border="none">
+			<include src="/footer.zul"/>
+		</south>
+	</borderlayout>
+</zk>

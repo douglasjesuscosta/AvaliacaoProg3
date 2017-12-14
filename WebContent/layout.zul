@@ -1,0 +1,16 @@
+<zk>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+    <borderlayout hflex="1" vflex="1">
+        <north height="100px" border="none" >
+            <include src="/banner.zul"/>
+        </north>
+        <west width="260px" border="none" visible="false">
+           
+        </west>
+        <center self="@insert(conteudo)">
+        </center>
+        <south height="50px" border="none">
+            sul
+        </south>
+    </borderlayout>
+</zk>

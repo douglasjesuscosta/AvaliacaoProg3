@@ -1,0 +1,16 @@
+<zk>
+	<style>
+		.banner { background-color:#4682B4; color: white; padding: 5px
+		10px; }
+	</style>
+
+	<div hflex="1" vflex="1" sclass="banner">
+		<hbox hflex="1" vflex="1" align="center">
+			<div width="400px">
+				<a href="http://localhost:8080/Avaliacao_2VA_Douglas_de_Jesus_Costa/">
+					<image src="/imagens/logo.png" width="150px" />
+				</a>
+			</div>
+		</hbox>
+	</div>
+</zk>

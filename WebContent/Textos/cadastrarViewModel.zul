@@ -1,0 +1,126 @@
+<?link rel="stylesheet" type="newText/css" href="/style.css"?>
+
+
+<?init class="org.zkoss.zk.ui.util.Composition"
+        arg0="/pagebased/layout/template.zul"?>
+        
+<window	apply="org.zkoss.bind.BindComposer" 
+	viewModel="@id('vm') @init('composer.ViewModelText')" 
+	id="Text"
+	border="normal" hflex="1" vflex="1" 
+	contentStyle="overflow:auto"
+	self="@define(conteudo)"
+	xmlns:h="http://www.w3.org/1999/xhtml">
+ 	<h:input type="hidden" id="useCase" value="Texts"/>
+	<vlayout>
+			<grid hflex="max">
+				<columns>
+					<column align="left" hflex="min" />
+					<column align="left" hflex="min"/>
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title" align="left">
+							Titulo :
+						</cell>
+						<cell>
+							<textbox value="@bind(vm.model.title)" width="200px" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Autor :
+						</cell>
+						<cell>
+							<textbox value="@bind(vm.model.author)" width="200px"/>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Data :
+						</cell>
+						<cell>
+							<datebox value="@bind(vm.model.date)" format="dd-MM-yyyy"
+								width="200px">
+							</datebox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Meio Fisico :
+						</cell>
+						<cell>
+							<checkbox checked="@bind(vm.model.physical)" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Meio Digital :
+						</cell>
+						<cell>
+							<checkbox checked="@bind(vm.model.digital)" ></checkbox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Classificação :
+						</cell>
+						<cell>
+							<combobox id="classificacao"
+								model="@load(vm.listClassifications)"
+								selectedItem="@bind(vm.model.classification)"
+								width="200px">
+								<template name="model">
+									<comboitem label="@load(each.name)" value="@load(each)"/>
+								</template>
+							</combobox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Tipo :
+						</cell>
+						<cell>
+							<radiogroup selectedItem="@bind(vm.model.kind)">
+								<hlayout>
+									<radio id="descritivo"
+										label="Descritivo"
+										value="descritivo"
+										 />
+									<radio id="argumentativo"
+										label="Argumentativo"
+										value="argumentativo"
+										 />
+								</hlayout>
+							</radiogroup>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="left">
+							Conteudo Privado :
+						</cell>
+						<cell>
+							<textbox value="@bind(vm.model.privateContent)"
+									width="200px">
+							</textbox>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title" align="center">
+							Conteudo :
+						</cell>
+						<cell>
+							<textbox value="@bind(vm.model.content)" width="700px;"
+									tabindex="11" height="200px;" rows="10000000">
+							</textbox>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+			<hlayout>
+				<button onClick="@command('save')" label="Salvar"></button>
+				<button onClick="@command('cancel')" label="Cancelar" />
+			</hlayout>
+		</vlayout>
+	
+</window>
